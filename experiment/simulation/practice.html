@@ -117,7 +117,7 @@
                                     <option value="S1">S1</option>
                                     <option value="Out">Out</option>
                                     <option value="Cout">Cout</option>
-                                </select>
+                                </select> ,
                             </p>
                             <p>&nbsp;&nbsp;output
                                 <select id="output2-selector">
@@ -136,12 +136,12 @@
                             <span class="comment">&nbsp;// Define the functionality of this module.</span>
                                 <p>
                                     always @(*)<br>
-                                    &nbsp;begin
-                                    &nbsp;&nbsp; if(S0===0 && S1===0)
+                                    &nbsp;&nbsp;begin<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp; if(S0===0 && S1===0)
                                     <br>
-                                    &nbsp;&nbsp;&nbsp;begin
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin
                                     <br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<select id="00-LHS-selector">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select id="00-LHS-selector">
                                         <option value="" disabled selected>Select LHS</option>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
@@ -183,7 +183,7 @@
                                         <option value="Cout">Cout</option>
                                     </select> &nbsp;;
                                     <br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<select id="00-LHS2-selector">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select id="00-LHS2-selector">
                                         <option value="" disabled selected>Select LHS</option>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
@@ -223,16 +223,16 @@
                                         <option value="S1">S1</option>
                                         <option value="Out">Out</option>
                                         <option value="Cout">Cout</option>
-                                    </select> <br>
+                                    </select>
                                     &nbsp;;
                                     <br>
-                                    &nbsp;&nbsp;&nbsp;end
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end
+                                    <br><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp; if(S1===0 && S0===1)
                                     <br>
-                                    &nbsp;&nbsp; if(S0===0 && S1===1)
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin
                                     <br>
-                                    &nbsp;&nbsp;&nbsp;begin
-                                    <br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<select id="01-LHS-selector">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select id="01-LHS-selector">
                                         <option value="" disabled selected>Select LHS</option>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
@@ -274,13 +274,13 @@
                                         <option value="Cout">Cout</option>
                                     </select> &nbsp;;
                                     <br>
-                                    &nbsp;&nbsp;&nbsp;end
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end
+                                    <br><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp; if(S1===1 && S0===0)
                                     <br>
-                                    &nbsp;&nbsp; if(S0===1 && S1===0)
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin
                                     <br>
-                                    &nbsp;&nbsp;&nbsp;begin
-                                    <br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<select id="10-LHS-selector">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select id="10-LHS-selector">
                                         <option value="" disabled selected>Select LHS</option>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
@@ -322,13 +322,13 @@
                                         <option value="Cout">Cout</option>
                                     </select> &nbsp;;
                                     <br>
-                                    &nbsp;&nbsp;&nbsp;end
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end
+                                    <br><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp; if(S1===1 && S0===1)
                                     <br>
-                                    &nbsp;&nbsp; if(S0===1 && S1===1)
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin
                                     <br>
-                                    &nbsp;&nbsp;&nbsp;begin
-                                    <br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<select id="11-LHS-selector">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select id="11-LHS-selector">
                                         <option value="" disabled selected>Select LHS</option>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
@@ -370,9 +370,9 @@
                                         <option value="Cout">Cout</option>
                                     </select> &nbsp;;
                                     <br>
-                                    &nbsp;&nbsp;&nbsp;end
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end
                                     <br>
-                                    &nbsp;end
+                                    &nbsp;&nbsp;end
                                     <br>
                                 </p>
                         </li>
@@ -387,7 +387,7 @@
                     Verilog Testbench
                 </div>
                 <div id="containerTB">
-                    <ul class="drag-sort    -enable custom-list" id="tb">
+                    <ul class="drag-sort-enable custom-list" id="tb">
                         <li id="1TB">
                             <span class="comment">// Define Test Bench name</span>
                             <p>
@@ -418,6 +418,7 @@
                                     <option value="S1">S1</option>
                                     <option value="Out">Out</option>
                                     <option value="Cout">Cout</option>
+                                </select> ;
                             </p>
                             <p>&nbsp;&nbsp;reg
                                 <select id="input3TB-selector">
@@ -430,7 +431,7 @@
                                     <option value="Cout">Cout</option>
                                 </select> ;
                             </p>
-                            <p>&nbsp;&nbsp;wire
+                            <p>&nbsp;&nbsp;reg
                                 <select id="input4TB-selector">
                                     <option value="" disabled selected>Select an input/output</option>
                                     <option value="A">A</option>
@@ -465,11 +466,11 @@
                             </p>
                         </li>
                         <li id="3TB">
-                            &nbsp;&nbsp;<span class="comment">// Instantiate the MUX module</span>
+                            &nbsp;&nbsp;<span class="comment">// Instantiate the ALU module</span>
                             <p>
                                 &nbsp;&nbsp;<input type="text" id="module-name-tb"
                                     placeholder="Enter the MUX module name "> uut
-                                (<br>
+                                (
                             </p>
                             <p>&nbsp;&nbsp;&nbsp;&nbsp;
                                 <select id="argument1-selector">
@@ -502,6 +503,7 @@
                                     <option value="S1">S1</option>
                                     <option value="Out">Out</option>
                                     <option value="Cout">Cout</option>
+                                </select> ,
                             </p>
                             <p>&nbsp;&nbsp;&nbsp;&nbsp;
                                 <select id="argument4-selector">
@@ -512,7 +514,7 @@
                                     <option value="S1">S1</option>
                                     <option value="Out">Out</option>
                                     <option value="Cout">Cout</option>
-                                </select> , ;
+                                </select> , 
                             </p>
                             <p>&nbsp;&nbsp;&nbsp;&nbsp;
                                 <select id="argument5-selector">
@@ -523,6 +525,7 @@
                                     <option value="S1">S1</option>
                                     <option value="Out">Out</option>
                                     <option value="Cout">Cout</option>
+                                </select> ,
                             </p>
                             <p>&nbsp;&nbsp;&nbsp;&nbsp;
                                 <select id="argument6-selector">

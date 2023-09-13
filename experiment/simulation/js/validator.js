@@ -51,7 +51,7 @@ export function isFilled() {
         return false;
     }
     if (input4.value === "") {
-        printErrors(error, input3);
+        printErrors(error, input4);
         return false;
     }
     if (output1.value === "") {
@@ -312,8 +312,8 @@ export function isValid() {
     let output1 = document.getElementById("output1-selector");
     let output2 = document.getElementById("output2-selector");
 
-    args_inputs = [input1, input2, input3, input4, output1, output2]
-    arr = [input1.value, input2.value, input3.value, input4.value, output1.value, output2.value]
+    let arr2 = [input1, input2, input3, input4, output1, output2]
+    let arr = [input1.value, input2.value, input3.value, input4.value, output1.value, output2.value]
 
     for (let i = 0; i < arr.length - 1; i++) {
         const currentElement = arr[i];
@@ -321,7 +321,7 @@ export function isValid() {
 
         if (nextElements.includes(currentElement)) {
             let msg = 'Highlighted variable declared more than once'
-            printErrors(msg, args_inputs[i]);
+            printErrors(msg, arr2[i]);
             return false;
         }
     }
@@ -335,21 +335,6 @@ export function isValid() {
     let operator01 = document.getElementById("01-operator-selector");
     let operator10 = document.getElementById("10-operator-selector");
     let operator11 = document.getElementById("11-operator-selector");
-    let RHS1LEFT00 = document.getElementById("00-RHS1LEFT-selector");
-    let RHS1LEFT01 = document.getElementById("01-RHS1LEFT-selector");
-    let RHS1LEFT10 = document.getElementById("10-RHS1LEFT-selector");
-    let RHS1LEFT11 = document.getElementById("11-RHS1LEFT-selector");
-    let RHS1OPERATOR00 = document.getElementById("00-RHS1OPERATOR-selector");
-    let RHS1OPERATOR01 = document.getElementById("01-RHS1OPERATOR-selector");
-    let RHS1OPERATOR10 = document.getElementById("10-RHS1OPERATOR-selector");
-    let RHS1OPERATOR11 = document.getElementById("11-RHS1OPERATOR-selector");
-    let RHS1RIGHT00 = document.getElementById("00-RHS1RIGHT-selector");
-    let RHS1RIGHT01 = document.getElementById("01-RHS1RIGHT-selector");
-    let RHS1RIGHT10 = document.getElementById("10-RHS1RIGHT-selector");
-    let RHS1RIGHT11 = document.getElementById("11-RHS1RIGHT-selector");
-    let RHS2LEFT = document.getElementById("00-RHS2LEFT-selector");
-    let RHS2OPERATOR = document.getElementById("00-RHS2OPERATOR-selector");
-    let RHS2RIGHT = document.getElementById("00-RHS2RIGHT-selector");
     let LHS2 = document.getElementById("00-LHS2-selector");
     let OPERATOR2 = document.getElementById("00-operator2-selector");
     if (LHS00.value === input1.value || LHS00.value === input2.value || LHS00.value === input3.value || LHS00.value === input4.value) {
@@ -372,6 +357,11 @@ export function isValid() {
         printErrors(msg, LHS11);
         return false;
     }
+    if (LHS2.value === input1.value || LHS2.value === input2.value || LHS2.value === input3.value || LHS2.value === input4.value) {
+        let msg = 'Inputs of a verilog module cannot be assigned values directly within the module itself.'
+        printErrors(msg, LHS2);
+        return false;
+    }
     if (operator00.value === "<=") {
         let msg = "This operator is incorrect for a combinational behaviour.";
         printErrors(msg, operator00);
@@ -392,6 +382,11 @@ export function isValid() {
         printErrors(msg, operator11);
         return false;
     }
+    if (OPERATOR2.value === "<=") {
+        let msg = "This operator is incorrect for a combinational behaviour.";
+        printErrors(msg, OPERATOR2);
+        return false;
+    }
 
     // checking i/o and function call arguments in test bench
     let input1TB = document.getElementById("input1TB-selector");
@@ -400,7 +395,7 @@ export function isValid() {
     let input4TB = document.getElementById("input4TB-selector");
     let input5TB = document.getElementById("input5TB-selector");
     let input6TB = document.getElementById("input6TB-selector");
-    args_inputs = [input1TB, input2TB, input3TB, input4TB, input5TB, input6TB]
+    arr2 = [input1TB, input2TB, input3TB, input4TB, input5TB, input6TB]
     arr = [input1TB.value, input2TB.value, input3TB.value, input4TB.value, input5TB.value, input6TB.value]
 
     for (let i = 0; i < arr.length - 1; i++) {
@@ -409,7 +404,7 @@ export function isValid() {
 
         if (nextElements.includes(currentElement)) {
             let msg = 'Highlighted variable declared more than once'
-            printErrors(msg, args_inputs[i]);
+            printErrors(msg, arr2[i]);
             return false;
         }
     }
@@ -512,7 +507,7 @@ export function printObsTable() {
             }
 
             else if (RHS1OPERATOR00 === "&") {
-                if (ALU[RHS1LEFT00] === 0 || MUX[RHS1RIGHT00] === 0)
+                if (ALU[RHS1LEFT00] === 0 || ALU[RHS1RIGHT00] === 0)
                     first = 0;
                 else if (ALU[RHS1LEFT00] === "x" || ALU[RHS1RIGHT00] === "x")
                     first = "x";
@@ -573,7 +568,7 @@ export function printObsTable() {
             }
 
             else if (RHS1OPERATOR01 === "&") {
-                if (ALU[RHS1LEFT01] === 0 || MUX[RHS1RIGHT01] === 0)
+                if (ALU[RHS1LEFT01] === 0 || ALU[RHS1RIGHT01] === 0)
                     first = 0;
                 else if (ALU[RHS1LEFT01] === "x" || ALU[RHS1RIGHT01] === "x")
                     first = "x";
@@ -605,7 +600,7 @@ export function printObsTable() {
             }
 
             else if (RHS1OPERATOR10 === "&") {
-                if (ALU[RHS1LEFT10] === 0 || MUX[RHS1RIGHT10] === 0)
+                if (ALU[RHS1LEFT10] === 0 || ALU[RHS1RIGHT10] === 0)
                     first = 0;
                 else if (ALU[RHS1LEFT10] === "x" || ALU[RHS1RIGHT10] === "x")
                     first = "x";
@@ -637,7 +632,7 @@ export function printObsTable() {
             }
 
             else if (RHS1OPERATOR11 === "&") {
-                if (ALU[RHS1LEFT11] === 0 || MUX[RHS1RIGHT11] === 0)
+                if (ALU[RHS1LEFT11] === 0 || ALU[RHS1RIGHT11] === 0)
                     first = 0;
                 else if (ALU[RHS1LEFT11] === "x" || ALU[RHS1RIGHT11] === "x")
                     first = "x";
