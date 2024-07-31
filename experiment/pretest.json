@@ -19,22 +19,23 @@
       "difficulty": "beginner"
     },
     {
-      "question": "Which Verilog keyword is used to declare a wire data type?",
+      "question": "Which of the following is a Verilog keyword used to instantiate a module?",
       "answers": {
-        "a": "reg",
-        "b": "wire",
-        "c": "int",
-        "d": "signal"
+        "a": "module",
+        "b": "assign",
+        "c": "always",
+        "d": "instance"
       },
       "explanations": {
-        "a": "Incorrect. 'reg' is used for register data types, not 'wire'.",
-        "b": "Correct. 'wire' is used to declare a wire data type in Verilog.",
-        "c": "Incorrect. 'int' is not a standard Verilog data type.",
-        "d": "Incorrect. 'signal' is not a standard Verilog keyword for data types."
+        "a": "Incorrect. 'module' is used to define a module, not to instantiate it.",
+        "b": "Incorrect. 'assign' is used for continuous assignments, not for instantiation.",
+        "c": "Incorrect. 'always' is used to define procedural blocks, not for instantiation.",
+        "d": "Correct. 'instance' is used to instantiate a module within another module."
       },
-      "correctAnswer": "b",
+      "correctAnswer": "d",
       "difficulty": "beginner"
     },
+    
     {
       "question": "What is the primary function of a full adder in an ALU?",
       "answers": {
