@@ -1,156 +1,207 @@
-This page provides an overview of Verilog, its significance, and practical examples of digital design using Verilog. We will explore three fundamental designs in this experiment:
+This page provides a comprehensive overview of ALU design and implementation in Verilog, focusing on arithmetic and logical operations with different data types and precision levels.
 
-1. **T-Flip Flop**
-2. **Counter**
-3. **T-Flip Flop Using D-Flip Flop**
+### Understanding ALU
+
+An Arithmetic Logic Unit (ALU) is a fundamental component in digital systems that performs arithmetic and logical operations. The ALU is a critical part of the processor that handles all mathematical and logical computations.
+
+#### Basic ALU Operations
+
+The ALU performs the following fundamental operations:
+
+1. **Arithmetic Operations**
+   - Addition ($A + B$)
+   - Subtraction ($A - B$)
+   - Multiplication ($A \times B$)
+   - Division ($A \div B$)
+
+2. **Logical Operations**
+   - AND ($A \cdot B$)
+   - OR ($A + B$)
+   - XOR ($A \oplus B$)
+   - NOT ($\overline{A}$)
+
+#### ALU Function Table
+
+| $S_1$ | $S_0$ | Operation | Output | Carry |
+|-------|-------|-----------|--------|-------|
+| $0$   | $0$   | Sum       | $(A + B)\%2$ | $C_{out}$ |
+| $0$   | $1$   | AND       | $A \cdot B$ | - |
+| $1$   | $0$   | OR        | $A + B$ | - |
+| $1$   | $1$   | XOR       | $A \oplus B$ | - |
+
+### Data Types and Precision
+
+#### IEEE 754 Floating-Point Formats
+
+1. **Half Precision (16-bit)**
+   - 1 sign bit
+   - 5 exponent bits
+   - 10 mantissa bits
+   - Range: $\pm 2^{-14}$ to $\pm 65504$
+   - Precision: ~3.3 decimal digits
+
+2. **Single Precision (32-bit)**
+   - 1 sign bit
+   - 8 exponent bits
+   - 23 mantissa bits
+   - Range: $\pm 2^{-126}$ to $\pm 2^{128}$
+   - Precision: ~7.2 decimal digits
+
+3. **Double Precision (64-bit)**
+   - 1 sign bit
+   - 11 exponent bits
+   - 52 mantissa bits
+   - Range: $\pm 2^{-1022}$ to $\pm 2^{1024}$
+   - Precision: ~15.9 decimal digits
+
+#### Fixed-Point Representation
+
+1. **Q-Format**
+   - Q$m.n$ format where:
+     - $m$: number of integer bits
+     - $n$: number of fractional bits
+   - Total bits = $m + n + 1$ (including sign bit)
+   - Range: $[-2^m, 2^m - 2^{-n}]$
+   - Resolution: $2^{-n}$
+
+2. **Common Q-Formats**
+   - Q15.16: 32-bit fixed-point
+   - Q7.8: 16-bit fixed-point
+   - Q3.4: 8-bit fixed-point
+
+### ALU Implementation Considerations
+
+#### 1. Data Type Selection
+
+```verilog
+// Parameterized ALU with configurable data width
+module alu #(
+    parameter DATA_WIDTH = 32,
+    parameter PRECISION = "SINGLE"  // "HALF", "SINGLE", "DOUBLE"
+)(
+    input [DATA_WIDTH-1:0] A,
+    input [DATA_WIDTH-1:0] B,
+    input [1:0] S,  // Operation select
+    output reg [DATA_WIDTH-1:0] Y,
+    output reg C  // Carry/Overflow
+);
+    // Implementation details...
+endmodule
+```
+
+#### 2. Precision Effects
+
+1. **Arithmetic Operations**
+   - Addition/Subtraction:
+     - Half precision: 16-bit operations
+     - Single precision: 32-bit operations
+     - Double precision: 64-bit operations
+
+2. **Logical Operations**
+   - Bit-wise operations remain same for all precisions
+   - Only data width changes
+
+3. **Performance Impact**
+   - Higher precision requires:
+     - More hardware resources
+     - Longer propagation delays
+     - Higher power consumption
+
+#### 3. Error Handling
+
+1. **Overflow Detection**
+   - For arithmetic operations:
+     $$C_{out} = \begin{cases}
+     1 & \text{if } A + B > 2^n - 1 \\
+     0 & \text{otherwise}
+     \end{cases}$$
+
+2. **Underflow Detection**
+   - For floating-point operations:
+     $$U_{flag} = \begin{cases}
+     1 & \text{if } |A| < 2^{-126} \text{ (single)} \\
+     1 & \text{if } |A| < 2^{-1022} \text{ (double)} \\
+     0 & \text{otherwise}
+     \end{cases}$$
+
+### Verilog Implementation
+
+#### Basic ALU Structure
+
+```verilog
+module alu(
+    input [31:0] A,
+    input [31:0] B,
+    input [1:0] S,
+    output reg [31:0] Y,
+    output reg C
+);
+    always @(*) begin
+        case(S)
+            2'b00: {C, Y} = A + B;        // Addition
+            2'b01: Y = A & B;             // AND
+            2'b10: Y = A | B;             // OR
+            2'b11: Y = A ^ B;             // XOR
+        endcase
+    end
+endmodule
+```
+
+#### Precision-Specific Implementation
+
+```verilog
+module alu_precision #(
+    parameter PRECISION = "SINGLE"
+)(
+    input [31:0] A,
+    input [31:0] B,
+    input [1:0] S,
+    output reg [31:0] Y,
+    output reg C
+);
+    // Precision-specific implementation
+    generate
+        if (PRECISION == "HALF") begin
+            // 16-bit operations
+        end
+        else if (PRECISION == "SINGLE") begin
+            // 32-bit operations
+        end
+        else if (PRECISION == "DOUBLE") begin
+            // 64-bit operations
+        end
+    endgenerate
+endmodule
+```
+
+### Performance Considerations
+
+1. **Timing**
+   - Critical path delay increases with precision
+   - Pipeline stages may be needed for higher precision
+
+2. **Area**
+   - Resource usage scales with data width
+   - Additional logic needed for error handling
+
+3. **Power**
+   - Dynamic power increases with precision
+   - Static power affected by circuit complexity
+
+### Applications
+
+1. **General-Purpose Computing**
+   - CPU/GPU arithmetic units
+   - Digital signal processing
+
+2. **Specialized Computing**
+   - Neural network accelerators
+   - Cryptography engines
+
+3. **Embedded Systems**
+   - Microcontrollers
+   - Digital signal processors
 
 ---
 
-Verilog is a hardware description language (HDL) developed to model electronic systems. It enables designers to describe the structure and behavior of digital circuits, facilitating simulation, synthesis, and verification. The modular nature of Verilog allows for efficient design, testing, and reuse of code.
-
----
-
-## 1. T-Flip Flop
-
-The Verilog code for a T-Flip Flop is shown below, accompanied by an explanation of its components:
-
-<p align="center">
-  <img src="images/t.jpg" alt="T-Flip Flop Verilog Code">
-</p>
-
-### Key Concepts
-
-- **Module:**  
-  A module is the fundamental building block in Verilog. It can represent a single element or a collection of lower-level design blocks. Modules encapsulate functionality and expose interfaces through input and output ports, allowing for abstraction and reuse.
-
-- **Module Name:**  
-  The module name is user-defined and is used to instantiate the module elsewhere in the design. Instantiation is demonstrated in the third example.
-
-- **Module Arguments:**  
-  Similar to function arguments in C, module arguments specify the input and output ports used for communication with other modules or the external environment.
-
-- **Input/Output Ports:**  
-  These ports facilitate data transfer into and out of the module. All arguments listed in the module declaration must be defined as either input or output within the module.
-
-- **Data Types:**  
-  In this example, the `reg` data type is used. Other data types, such as `wire`, will be introduced in subsequent examples. Refer to the chart below for an overview of Verilog data types:
-
-  <p align="center">
-    <img src="images/data.jpg" alt="Verilog Data Types">
-  </p>
-
-- **Always Block:**  
-  The `always` block contains statements that execute repeatedly, triggered by changes in specified signals (e.g., clock or reset).
-
-- **Posedge Clock:**  
-  The `posedge` (positive edge) of the clock triggers the execution of statements within the `always` block, corresponding to a transition from low to high voltage.
-
-- **Negedge Reset:**  
-  The `negedge` (negative edge) of the reset signal asynchronously sets the output to zero, regardless of the clock.
-
-- **Operators and Lexical Conventions:**  
-  Operators such as `~` (bitwise NOT) and `!` (logical NOT) are used in Verilog. The chart below summarizes various operators and conventions:
-
-  <p align="center">
-    <img src="images/lex.jpg" alt="Verilog Operators and Lexical Conventions">
-  </p>
-
-- **Loops:**  
-  Verilog supports control structures such as `for`, `if-else`, and `while`, similar to C. These structures use `begin` and `end` to define statement blocks.
-
-- **Blocking and Non-Blocking Assignments:**
-  - **Blocking (`=`):** Statements execute sequentially.
-  - **Non-Blocking (`<=`):** Statements execute concurrently.  
-    For example:
-    ```
-    a = b;
-    b = a;
-    ```
-    Both `a` and `b` will have the value of `b`.  
-    Using non-blocking assignment:
-    ```
-    a <= b;
-    b <= a;
-    ```
-    The values are swapped simultaneously.
-
----
-
-## 2. Counter
-
-The Verilog code for a counter is provided below, with explanations for each part:
-
-<p align="center">
-  <img src="images/c.jpg" alt="Counter Verilog Code">
-</p>
-
-### Additional Notes
-
-- **Assign Statement:**  
-  The `assign` keyword is used for continuous assignment. For example, `assign Q = tmp;` ensures that `Q` is updated immediately whenever `tmp` changes, regardless of execution sequence.
-
----
-
-## 3. T-Flip Flop Using D-Flip Flop
-
-The Verilog code for implementing a T-Flip Flop using a D-Flip Flop is shown below:
-
-<p align="center">
-  <img src="images/td.jpg" alt="T-Flip Flop using D-Flip Flop Verilog Code">
-</p>
-
-### Key Concepts
-
-- **Module Instantiation:**  
-  Modules are not defined within other modules; instead, they are instantiated (called) as needed. The module is referenced by its original name, but each instance must have a unique identifier. For example, the module `D_FF` is instantiated as `dff0`.
-
-- **Verilog Primitives:**  
-  Verilog provides built-in primitives such as `not`. In `not (d, q);`, `d` is the output and `q` is the input.
-
-- **Compiler Directives and System Tasks:**  
-  While not used in the above examples, Verilog supports compiler directives and system tasks for advanced functionality. Refer to the flowcharts below for more information:
-
-  <p align="center">
-    <img src="images/task.jpg" alt="Verilog System Tasks">
-  </p>
-  <p align="center">
-    <img src="images/direc.jpg" alt="Verilog Compiler Directives">
-  </p>
-
----
-
-## ALU
-
-The Arithmetic Logic Unit (ALU) is a fundamental component in digital systems, responsible for performing arithmetic and logical operations. In this experiment, the ALU circuit consists of the following TTL family components:
-
-- One 4-input multiplexer
-- One full adder
-- One 2-input AND gate
-- One 2-input OR gate
-- One 2-input XOR gate
-
-### ALU Function Table
-
-| S1 S0 | Operation   | Carry | Output    |
-|-------|-------------|-------|-----------|
-| 00    | Sum         | Carry | (A + B)%2 |
-| 01    | A AND B     |   -   | A & B     |
-| 10    | A OR B      |   -   | A \| B    |
-| 11    | A XOR B     |   -   | A ^ B     |
-
-<p align="center">
-  <img src="images/alu-design.jpeg" alt="ALU Design">
-</p>
-
-### Key Concepts
-
-- **Select Lines (S1, S0):**  
-  S1 and S0 are select lines that determine which operation the ALU performs. Together with the input arguments, these lines form an instruction set.
-
-- **Instruction Storage:**  
-  These instructions are often stored in a ROM unit for frequent use in programs.
-
-- **Input Registers:**  
-  Inputs A and B are typically stored in internal registers. These, along with other special registers, make up the register set of a microcontroller.
-
----
+> **Note:** This theory guide focuses on the fundamental concepts of ALU design and implementation. For practical implementation steps, refer to the procedure.md file.
