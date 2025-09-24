@@ -1,0 +1,1 @@
+To design and implement an arithmetic logic unit (ALU) using Verilog, demonstrating its functionality through simulation.
