@@ -10,7 +10,7 @@
     "ajv-formats": "^2.1.1",
     "boxen": "^4.2.0",
     "chalk": "^4.1.2",
-    "eslint": "^8.49.0",
+    "eslint": "^9.26.0",
     "eslint-plugin-only-warn": "^1.1.0",
     "figures": "^3.2.0",
     "fs-extra": "^9.1.0",
