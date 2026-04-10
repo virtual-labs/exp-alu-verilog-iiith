@@ -1,0 +1,226 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "In Verilog, which data type is commonly used for storing the result of arithmetic operations in an ALU?",
+      "answers": {
+        "a": "reg",
+        "b": "wire",
+        "c": "integer",
+        "d": "output"
+      },
+      "explanations": {
+        "a": "Correct. 'reg' is commonly used for storing results in Verilog.",
+        "b": "Incorrect. 'wire' is typically used for connecting components.",
+        "c": "Incorrect. 'integer' is used for integers, not results.",
+        "d": "Incorrect. 'output' is not a standard Verilog data type for results."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What is the purpose of the 'always @(posedge clk)' block in Verilog code for an ALU?",
+      "answers": {
+        "a": "To define the inputs.",
+        "b": "To specify asynchronous behavior.",
+        "c": "To describe sequential logic triggered by the rising edge of the clock signal.",
+        "d": "To declare constants."
+      },
+      "explanations": {
+        "a": "Incorrect. The 'always @(posedge clk)' block is not used for defining inputs.",
+        "b": "Incorrect. Asynchronous behavior is typically specified with 'always @(*)'.",
+        "c": "Correct. 'always @(posedge clk)' describes sequential logic triggered by the rising edge of the clock signal.",
+        "d": "Incorrect. Constants are usually declared outside of the 'always' block."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "Which Verilog operator is used to perform addition operation between two 4-bit inputs in an ALU?",
+      "answers": {
+        "a": "+",
+        "b": "&&",
+        "c": "+=",
+        "d": "|"
+      },
+      "explanations": {
+        "a": "Correct. '+' is used for addition between 4-bit inputs in Verilog.",
+        "b": "Incorrect. '&&' is used for logical AND, not addition.",
+        "c": "Incorrect. '+=' is an assignment operator, not for addition.",
+        "d": "Incorrect. '|' is used for bitwise OR, not addition."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What is the function of the 'case' statement in Verilog code for an ALU?",
+      "answers": {
+        "a": "To define a clock signal.",
+        "b": "To perform conditional operations based on input values.",
+        "c": "To declare constants.",
+        "d": "To specify asynchronous behavior."
+      },
+      "explanations": {
+        "a": "Incorrect. The 'case' statement is not used to define clock signals.",
+        "b": "Correct. The 'case' statement is used to perform conditional operations based on input values.",
+        "c": "Incorrect. Constants are typically declared differently.",
+        "d": "Incorrect. Asynchronous behavior is not the primary purpose of the 'case' statement."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "Which keyword is used to define the behavior of an ALU module in Verilog?",
+      "answers": {
+        "a": "module",
+        "b": "function",
+        "c": "always",
+        "d": "assign"
+      },
+      "explanations": {
+        "a": "Correct. 'module' is used to define the behavior of Verilog modules.",
+        "b": "Incorrect. 'function' is used for defining functions, not modules.",
+        "c": "Incorrect. 'always' is used for specifying behavior within modules.",
+        "d": "Incorrect. 'assign' is used for continuous assignments in Verilog."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "In Verilog, what does 'assign' keyword do?",
+      "answers": {
+        "a": "Declares variables.",
+        "b": "Defines sequential logic.",
+        "c": "Specifies continuous assignments.",
+        "d": "Creates a case statement."
+      },
+      "explanations": {
+        "a": "Incorrect. 'assign' does not declare variables.",
+        "b": "Incorrect. 'assign' is not used to define sequential logic.",
+        "c": "Correct. 'assign' is used to specify continuous assignments in Verilog.",
+        "d": "Incorrect. 'assign' is not used to create case statements."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What is the purpose of the 'always @(posedge clk or negedge reset)' block in Verilog code for an ALU?",
+      "answers": {
+        "a": "To define input values.",
+        "b": "To specify asynchronous behavior.",
+        "c": "To describe combinational logic.",
+        "d": "To reset the ALU."
+      },
+      "explanations": {
+        "a": "Incorrect. Defining input values is typically done in other parts of Verilog code.",
+        "b": "Correct. 'always @(posedge clk or negedge reset)' is used to specify asynchronous behavior triggered by the clock signal or reset.",
+        "c": "Incorrect. Combinational logic is not the primary purpose of this block.",
+        "d": "Incorrect. Resetting the ALU is not the primary purpose of this block."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "In Verilog, which keyword is used to declare a 4-bit input port in an ALU module?",
+      "answers": {
+        "a": "input [3:0]",
+        "b": "output [3:0]",
+        "c": "wire [3:0]",
+        "d": "reg [3:0]"
+      },
+      "explanations": {
+        "a": "Correct. 'input [3:0]' is used to declare a 4-bit input port.",
+        "b": "Incorrect. 'output [3:0]' is used for output ports.",
+        "c": "Incorrect. 'wire [3:0]' is used for wire connections.",
+        "d": "Incorrect. 'reg [3:0]' is used for registers, not input ports."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What does the Verilog 'assign' statement do in an ALU module?",
+      "answers": {
+        "a": "Declares variables.",
+        "b": "Defines sequential logic.",
+        "c": "Specifies continuous assignments.",
+        "d": "Creates a case statement."
+      },
+      "explanations": {
+        "a": "Incorrect. 'assign' does not declare variables.",
+        "b": "Incorrect. 'assign' is not used to define sequential logic.",
+        "c": "Correct. 'assign' is used to specify continuous assignments in Verilog.",
+        "d": "Incorrect. 'assign' is not used to create case statements."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What is the purpose of a 'generate' block in Verilog code for an ALU?",
+      "answers": {
+        "a": "To define custom functions.",
+        "b": "To conditionally generate code during compilation.",
+        "c": "To create clock signals.",
+        "d": "To specify asynchronous behavior."
+      },
+      "explanations": {
+        "a": "Incorrect. 'generate' blocks are not used to define custom functions.",
+        "b": "Correct. 'generate' blocks conditionally generate code during compilation, allowing for parameterized modules.",
+        "c": "Incorrect. 'generate' blocks are not used to create clock signals.",
+        "d": "Incorrect. 'generate' blocks are not used to specify asynchronous behavior."
+      },
+      "correctAnswer": "b",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "In Verilog, what is the role of the 'fork-join' construct?",
+      "answers": {
+        "a": "To create custom data types.",
+        "b": "To specify timing constraints.",
+        "c": "To create parallel execution blocks.",
+        "d": "To define module parameters."
+      },
+      "explanations": {
+        "a": "Incorrect. 'fork-join' is not used to create custom data types.",
+        "b": "Incorrect. Timing constraints are typically defined using other constructs.",
+        "c": "Correct. 'fork-join' is used to create parallel execution blocks in Verilog.",
+        "d": "Incorrect. Module parameters are defined separately in Verilog modules."
+      },
+      "correctAnswer": "c",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "What is the purpose of the 'localparam' keyword in Verilog code for an ALU?",
+      "answers": {
+        "a": "To declare global variables.",
+        "b": "To specify port connections.",
+        "c": "To define local parameters that cannot be overridden.",
+        "d": "To create always blocks."
+      },
+      "explanations": {
+        "a": "Incorrect. 'localparam' does not declare global variables.",
+        "b": "Incorrect. Port connections are typically specified differently.",
+        "c": "Correct. 'localparam' is used to define local parameters that cannot be overridden within the module.",
+        "d": "Incorrect. 'always' blocks are created using the 'always' keyword, not 'localparam'."
+      },
+      "correctAnswer": "c",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "What is the primary purpose of a 'parameter' in Verilog code for an ALU?",
+      "answers": {
+        "a": "To specify timing constraints.",
+        "b": "To define module parameters that can be overridden during instantiation.",
+        "c": "To create custom functions.",
+        "d": "To generate clock signals."
+      },
+      "explanations": {
+        "a": "Incorrect. Timing constraints are typically not specified using parameters.",
+        "b": "Correct. 'parameter' is used to define module parameters that can be overridden during instantiation.",
+        "c": "Incorrect. Custom functions are defined differently in Verilog.",
+        "d": "Incorrect. Generating clock signals is not the primary purpose of parameters."
+      },
+      "correctAnswer": "b",
+      "difficulty": "advanced"
+    }
+  ]
+}

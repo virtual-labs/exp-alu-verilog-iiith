@@ -1,0 +1,176 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "What is the purpose of an Arithmetic Logic Unit (ALU) in computer architecture?",
+      "answers": {
+        "a": "To perform arithmetic and logic operations on data.",
+        "b": "To store data temporarily.",
+        "c": "To control input/output operations.",
+        "d": "To manage memory allocation."
+      },
+      "explanations": {
+        "a": "Correct. An ALU is designed to perform arithmetic and logic operations on data.",
+        "b": "Incorrect. The primary function of an ALU is not to store data temporarily.",
+        "c": "Incorrect. ALU's primary role is not related to input/output operations.",
+        "d": "Incorrect. Managing memory allocation is not the primary role of an ALU."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which of the following is a Verilog keyword used to instantiate a module?",
+      "answers": {
+        "a": "module",
+        "b": "assign",
+        "c": "always",
+        "d": "instance"
+      },
+      "explanations": {
+        "a": "Incorrect. 'module' is used to define a module, not to instantiate it.",
+        "b": "Incorrect. 'assign' is used for continuous assignments, not for instantiation.",
+        "c": "Incorrect. 'always' is used to define procedural blocks, not for instantiation.",
+        "d": "Correct. 'instance' is used to instantiate a module within another module."
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+    
+    {
+      "question": "What is the primary function of a full adder in an ALU?",
+      "answers": {
+        "a": "Performing addition operations.",
+        "b": "Performing logical AND operations.",
+        "c": "Performing subtraction operations.",
+        "d": "Performing bitwise XOR operations."
+      },
+      "explanations": {
+        "a": "Correct. A full adder in an ALU is primarily used for performing addition operations.",
+        "b": "Incorrect. Logical AND operations are not the primary function of a full adder.",
+        "c": "Incorrect. Full adders are not designed for subtraction operations.",
+        "d": "Incorrect. Full adders are not designed for bitwise XOR operations."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "Which Verilog operator is used for bitwise XOR operation?",
+      "answers": {
+        "a": "+",
+        "b": "&&",
+        "c": "^",
+        "d": "|"
+      },
+      "explanations": {
+        "a": "Incorrect. '+' is not used for bitwise XOR in Verilog.",
+        "b": "Incorrect. '&&' is used for logical AND, not bitwise XOR.",
+        "c": "Correct. In Verilog, the '^' operator is used for bitwise XOR operation.",
+        "d": "Incorrect. '|' is used for bitwise OR, not bitwise XOR."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What is the purpose of the Verilog 'always' block?",
+      "answers": {
+        "a": "To declare variables.",
+        "b": "To define initial values.",
+        "c": "To specify asynchronous behavior.",
+        "d": "To describe combinational logic."
+      },
+      "explanations": {
+        "a": "Incorrect. The 'always' block is not used for declaring variables.",
+        "b": "Incorrect. Initial values are typically set elsewhere in Verilog.",
+        "c": "Correct. The 'always' block is used to specify asynchronous behavior in Verilog.",
+        "d": "Incorrect. The 'always' block is primarily used for sequential logic, not combinational logic."
+      },
+      "correctAnswer": "c",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "In a Verilog module, what does the 'posedge' keyword indicate in an 'always' block?",
+      "answers": {
+        "a": "Rising edge trigger.",
+        "b": "Falling edge trigger.",
+        "c": "Continuous clock signal.",
+        "d": "Negative voltage level."
+      },
+      "explanations": {
+        "a": "Correct. 'Posedge' indicates a rising edge trigger in an 'always' block, which triggers on the rising edge of a clock signal.",
+        "b": "Incorrect. 'Posedge' is not used for falling edge triggers.",
+        "c": "Incorrect. 'Posedge' is not related to a continuous clock signal.",
+        "d": "Incorrect. 'Posedge' does not indicate a negative voltage level."
+      },
+      "correctAnswer": "a",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "Which Verilog operator is used for bitwise AND operation?",
+      "answers": {
+        "a": "+",
+        "b": "&&",
+        "c": "&",
+        "d": "|"
+      },
+      "explanations": {
+        "a": "Incorrect. '+' is not used for bitwise AND in Verilog.",
+        "b": "Incorrect. '&&' is used for logical AND, not bitwise AND.",
+        "c": "Correct. In Verilog, the '&' operator is used for bitwise AND operation.",
+        "d": "Incorrect. '|' is used for bitwise OR, not bitwise AND."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What is the binary representation of the decimal number 10?",
+      "answers": {
+        "a": "1010",
+        "b": "1000",
+        "c": "1110",
+        "d": "1101"
+      },
+      "explanations": {
+        "a": "Correct. The binary representation of decimal 10 is '1010'.",
+        "b": "Incorrect. '1000' is not the binary representation of 10.",
+        "c": "Incorrect. '1110' is not the binary representation of 10.",
+        "d": "Incorrect. '1101' is not the binary representation of 10."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which Verilog data type is typically used to store integer values?",
+      "answers": {
+        "a": "reg",
+        "b": "wire",
+        "c": "integer",
+        "d": "real"
+      },
+      "explanations": {
+        "a": "Incorrect. 'reg' is not typically used to store integers in Verilog.",
+        "b": "Incorrect. 'wire' is not a data type for integers in Verilog.",
+        "c": "Correct. The 'integer' data type in Verilog is typically used to store integer values.",
+        "d": "Incorrect. 'real' is used for floating-point numbers, not integers."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "In Verilog, what is the purpose of the 'always @(*)' construct?",
+      "answers": {
+        "a": "To create an infinite loop.",
+        "b": "To define initial values.",
+        "c": "To describe combinational logic.",
+        "d": "To specify clock edges."
+      },
+      "explanations": {
+        "a": "Incorrect. 'always @(*)' does not create an infinite loop.",
+        "b": "Incorrect. Initial values are not defined with 'always @(*)'.",
+        "c": "Correct. 'always @(*)' is used to describe combinational logic in Verilog.",
+        "d": "Incorrect. 'always @(*)' is not used to specify clock edges."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    }
+  ]  
+}
